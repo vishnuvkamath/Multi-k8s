@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: complex
+  name: postgres-deployment
+spec:
+  replicas: 1 #never give 2 or more because it might crash the system as multiple pods pointing to same database(FS)
+  selector:
+    matchLabels:
+      component: postgres
+  template:
+    metadata:
+      labels:
+        component: postgres
+    spec:
+      volumes:
+        - name: postgres-storage
+          persistentVolumeClaim:
+            claimName: database-persistent-volume-claim #name from PVC file for k8s to get the storage set in PVC file
+      containers:
+        - name: postgres
+          image: postgres
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - name: postgres-storage #name shud match with the storage name given under volumes
+              mountPath: /var/lib/postgresql/data #designating where to the data be available (default path is given here)
+              subPath: postgres #sub folder to save data saved
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pgpassword
+                  key: PGPASSWORD
