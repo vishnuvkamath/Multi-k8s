@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: complex
+  # namespace: complex
   name: postgres-deployment
 spec:
   replicas: 1 #never give 2 or more because it might crash the system as multiple pods pointing to same database(FS)

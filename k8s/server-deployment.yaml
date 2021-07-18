@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: complex
+  # namespace: complex
   name: server-deployment
 spec:
   replicas: 3
