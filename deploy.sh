@@ -13,8 +13,8 @@ docker push nucoxia/multi-worker:$SHA
 
 kubectl apply -f k8s
 
-kubectl set image deployments/client-deployment client=nucoxia/multi-client:$SHA
-kubectl set image deployments/server-deployment server=nucoxia/multi-server:$SHA
-kubectl set image deployments/worker-deployment worker=nucoxia/multi-worker:$SHA
+kubectl set image deployment/client-deployment client=nucoxia/multi-client:$SHA
+kubectl set image deployment/server-deployment server=nucoxia/multi-server:$SHA
+kubectl set image deployment/worker-deployment worker=nucoxia/multi-worker:$SHA
 
 
