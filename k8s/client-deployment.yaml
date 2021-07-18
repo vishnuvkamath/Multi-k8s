@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: client
-          image: nucoxia/multi-client
+          image: nucoxia/multi-client-k8s
           ports:
             - containerPort: 3000

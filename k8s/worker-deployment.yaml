@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: nucoxia/multi-worker
+          image: nucoxia/multi-worker-k8s
           env:
             - name: REDIS_HOST
               value: redis-cluster-ip-service
