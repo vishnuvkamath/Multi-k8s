@@ -14,7 +14,7 @@ spec:
         component: worker
     spec:
       containers:
-        - name: client
+        - name: worker
           image: nucoxia/multi-worker-k8s
           env:
             - name: REDIS_HOST
